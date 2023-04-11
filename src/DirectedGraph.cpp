@@ -30,7 +30,7 @@ DirectedGraph::DirectedGraph()
 //***************************************************************************
 DirectedGraph::~DirectedGraph()
 {
-  deallocateGraph();
+//  deallocateGraph();
 }
 
 //***************************************************************************

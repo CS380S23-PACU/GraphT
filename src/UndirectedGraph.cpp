@@ -31,7 +31,7 @@ UndirectedGraph::UndirectedGraph()
 //***************************************************************************
 UndirectedGraph::~UndirectedGraph()
 {
-  deallocateGraph();
+//  deallocateGraph();
 }
 
 //***************************************************************************
