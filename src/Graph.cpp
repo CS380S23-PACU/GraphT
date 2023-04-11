@@ -32,10 +32,24 @@ Graph::Graph()
 //***************************************************************************
 // Destructor:  ~Graph
 //
-// Description: Destory the nodes in the graph
+// Description: 
 //
 //***************************************************************************
 Graph::~Graph()
+{
+  // subclass must call deallocateGraph
+}
+
+//***************************************************************************
+// Function:    deallocateGraph
+//
+// Description: Destory the nodes in the graph
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+void Graph::deallocateGraph()
 {
   for(auto ptr : mcNodes)
   {
@@ -471,6 +485,7 @@ std::vector<Edge*>  Graph::MST()
 //***************************************************************************
 std::istream & operator>>(std::istream& rcInFile, Graph& rcGraph)
 {
+  rcGraph.deallocateGraph();
   rcGraph.read(rcInFile);
   return rcInFile;
 }

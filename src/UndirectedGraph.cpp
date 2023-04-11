@@ -31,6 +31,20 @@ UndirectedGraph::UndirectedGraph()
 //***************************************************************************
 UndirectedGraph::~UndirectedGraph()
 {
+  deallocateGraph();
+}
+
+//***************************************************************************
+// Function:    deallocateGraph
+//
+// Description: Destory the edges and nodes in the graph
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+void UndirectedGraph::deallocateGraph()
+{
   auto cNodes = getNodes();
 
   for(auto node : cNodes)
@@ -43,6 +57,7 @@ UndirectedGraph::~UndirectedGraph()
       }
     }
   }
+  Graph::deallocateGraph();
 }
 
 //***************************************************************************

@@ -73,7 +73,8 @@ class Graph
     virtual std::string getEdgeType() const = 0;
     virtual bool printEdge(const std::string &, const std::string&) const = 0;
     Node* insertNode(const std::string&);
-   
+    virtual void deallocateGraph();
+    
   private:
     std::map<std::string, Node*> mcNodes;
     std::map<std::string, std::map<std::string, Edge*>> mcAdjList;
