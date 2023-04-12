@@ -37,8 +37,21 @@ Graph::Graph()
 //***************************************************************************
 Graph::~Graph()
 {
-  // subclass must call deallocateGraph
 
+  deallocateGraph();
+}
+
+//***************************************************************************
+// Function:    deallocateGraph
+//
+// Description: Destory the nodes in the graph
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+void Graph::deallocateGraph()
+{
   for(auto &left : mcAdjList)
   {
     for (auto &right : mcAdjList[left.first])
@@ -58,24 +71,12 @@ Graph::~Graph()
     }
   }
 
-  Graph::deallocateGraph();
-}
-
-//***************************************************************************
-// Function:    deallocateGraph
-//
-// Description: Destory the nodes in the graph
-//
-// Parameters:  None
-//
-// Returned:    None
-//***************************************************************************
-void Graph::deallocateGraph()
-{
   for(auto ptr : mcNodes)
   {
     delete ptr.second;
   }
+  mcNodes.clear();
+  mcAdjList.clear();
 }
 
 //***************************************************************************

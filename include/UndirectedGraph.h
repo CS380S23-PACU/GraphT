@@ -24,5 +24,4 @@ class UndirectedGraph : public Graph
     virtual std::string graphType() const;
     virtual std::string getEdgeType() const;
     virtual bool printEdge(const std::string &, const std::string&) const;
-    virtual void deallocateGraph();
 };

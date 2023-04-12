@@ -27,14 +27,12 @@
 //***************************************************************************
 int main(int argc, char* argv[])
 {
-//  DirectedGraph cGraph;
-    UndirectedGraph cGraph;
+  DirectedGraph cGraph;
+//    UndirectedGraph cGraph;
 
-  //std::ifstream inFile;
+  std::ifstream inFile;
 
-  //inFile.open(argv[1]);
-  //inFile >> cGraph;
-
+  
   cGraph.addEdge("x", "y", 1);
   cGraph.addEdge("y", "z", 2);
   cGraph.addEdge("x", "z", 20);
@@ -55,6 +53,9 @@ int main(int argc, char* argv[])
 
   //cGraph.BFS("x");
   //cGraph.MST();
+
+  inFile.open(argv[1]);
+  inFile >> cGraph;
 
   std::cout << cGraph;
 

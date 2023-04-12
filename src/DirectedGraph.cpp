@@ -30,31 +30,8 @@ DirectedGraph::DirectedGraph()
 //***************************************************************************
 DirectedGraph::~DirectedGraph()
 {
-//  deallocateGraph();
 }
 
-//***************************************************************************
-// Function:    deallocateGraph
-//
-// Description: Destory the edges and nodes in the graph
-//
-// Parameters:  None
-//
-// Returned:    None
-//***************************************************************************
-void DirectedGraph::deallocateGraph()
-{
-  auto cNodes = getNodes();
-
-  for(auto node : cNodes)
-  {
-    for(auto end : getNeighbors(node))
-    {
-      deleteEdge(node->getLabel(), end->getLabel());
-    }
-  }
-  Graph::deallocateGraph();
-}
 
 //***************************************************************************
 // Function:    addEdge
