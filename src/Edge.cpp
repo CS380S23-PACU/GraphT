@@ -16,7 +16,8 @@ int Edge::EDGE_CURR_ID = 0;
 //***************************************************************************
 Edge::Edge() : mID(EDGE_CURR_ID++)
 {
-  mWeight = 0;
+  mpsAttributes = std::make_shared<EdgeAttributes>() ;
+  mpsAttributes->mWeight = 0;
   
   reset();
 }
@@ -36,7 +37,8 @@ Edge::Edge(Node *pcStart,Node* pcEnd,
 {
   mpcNodeStart = pcStart;
   mpcNodeEnd = pcEnd;
-  mWeight = weight;
+  mpsAttributes = std::make_shared<EdgeAttributes>() ;
+  mpsAttributes->mWeight = weight;
   reset();
 }
 
@@ -47,7 +49,28 @@ Edge::Edge(Node *pcStart,Node* pcEnd,
 //
 //***************************************************************************
 Edge::~Edge()
-{}
+{
+}
+
+//***************************************************************************
+// Function:    newFlippedEdge
+//
+// Description: Produce a new edge in the other direction.  The edges
+//              share the same attributes
+//
+// Parameters:  None
+//
+// Returned:    The new edge
+//***************************************************************************
+Edge* Edge::newFlippedEdge() const
+{
+  Edge *pcNewEdge = new Edge (mpcNodeEnd, mpcNodeStart, mpsAttributes->mWeight);
+  pcNewEdge->mpsAttributes = nullptr;
+  pcNewEdge->mpsAttributes = mpsAttributes;
+
+  return pcNewEdge;
+}
+
 
 //***************************************************************************
 // Function:    operator==
@@ -88,7 +111,7 @@ bool Edge::operator<(const Edge &rcOther) const
 //***************************************************************************
 void Edge::setOutputColor(const std::string &rcColor)
 {
-  mColor = rcColor;
+  mpsAttributes->mColor = rcColor;
 }
 
 //***************************************************************************
@@ -102,7 +125,7 @@ void Edge::setOutputColor(const std::string &rcColor)
 //***************************************************************************
 std::string Edge::getOutputColor() const
 {
-  return mColor;
+  return mpsAttributes->mColor;
 }
 
 //***************************************************************************
@@ -116,7 +139,7 @@ std::string Edge::getOutputColor() const
 //***************************************************************************
 int Edge::getWeight() const
 {
-  return mWeight;
+  return mpsAttributes->mWeight;
 }
 
 //***************************************************************************
@@ -130,7 +153,7 @@ int Edge::getWeight() const
 //***************************************************************************
 void Edge::setHighlight(bool bValue)
 {
-  mHighlight = bValue;
+  mpsAttributes->mHighlight = bValue;
 }
 
 //***************************************************************************
@@ -144,7 +167,7 @@ void Edge::setHighlight(bool bValue)
 //***************************************************************************
 bool Edge::isHighlighted() const
 {
-  return mHighlight;
+  return mpsAttributes->mHighlight;
 }
 
 //***************************************************************************
@@ -180,8 +203,8 @@ std::string Edge::printAttributes() const
 //***************************************************************************
 void Edge::reset()
 {
-  mHighlight = false;
-  mColor = ORIG_COLOR;
+  mpsAttributes->mHighlight = false;
+  mpsAttributes->mColor = ORIG_COLOR;
 }
 
 

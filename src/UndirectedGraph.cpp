@@ -57,7 +57,10 @@ const std::string & rcEnd, int weight)
   Edge *pcEdge = new Edge(pcStart, pcEnd, weight);
 
   Graph::addEdge(pcStart, pcEnd, pcEdge);
-  Graph::addEdge(pcEnd, pcStart, pcEdge);
+  if ( rcStart != rcEnd)
+  {
+    Graph::addEdge(pcEnd, pcStart, pcEdge->newFlippedEdge());
+  }
 
 }
 

@@ -73,7 +73,6 @@ class Graph
     virtual std::string getEdgeType() const = 0;
     virtual bool printEdge(const std::string &, const std::string&) const = 0;
     Node* insertNode(const std::string&);
-    virtual void deallocateGraph();
     
   private:
     std::map<std::string, Node*> mcNodes;
@@ -85,5 +84,6 @@ class Graph
     std::queue<std::string> mcColors;
 
     std::string getNextColor();
+    virtual void deallocateGraph();
 
 };

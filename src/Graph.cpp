@@ -56,18 +56,8 @@ void Graph::deallocateGraph()
   {
     for (auto &right : mcAdjList[left.first])
     {
-      if (mcAdjList[left.first][right.first] == mcAdjList[right.first][left.first])
-      {
-        delete mcAdjList[left.first][right.first] ;
-        mcAdjList[left.first][right.first] = nullptr;
-        mcAdjList[right.first][left.first] = nullptr;
-        mcAdjList[right.first].erase(left.first);
-      }
-      else
-      {
-        delete mcAdjList[left.first][right.first] ;
-        mcAdjList[left.first][right.first] = nullptr;
-      }
+      delete mcAdjList[left.first][right.first] ;
+      mcAdjList[left.first][right.first] = nullptr;
     }
   }
 

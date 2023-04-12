@@ -8,8 +8,10 @@
 //***************************************************************************
 #pragma once
 
+#include <memory>
 #include <iostream>
 #include <string>
+#include <EdgeAttributes.h>
 
 class Node;
 
@@ -21,6 +23,8 @@ class Edge
     Edge();
     Edge(Node*, Node*, int weight=0);
     ~Edge();
+
+    Edge* newFlippedEdge() const;
 
     int getWeight() const;
 
@@ -43,9 +47,7 @@ class Edge
 
   private:
 
-    int mWeight;
-    bool mHighlight;
-    std::string mColor;
+    std::shared_ptr<EdgeAttributes> mpsAttributes;
 
     Node* mpcNodeStart;
     Node* mpcNodeEnd;
