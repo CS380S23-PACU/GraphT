@@ -325,8 +325,8 @@ void Graph::printPath(const std::string &rcDest, std::ostream& rcOut)
   while(pcNode->getPrev() != nullptr)
   {
  
-    rcOut << pcNode->getPrev() << " " << getEdgeType() << " ";
-    rcOut << currNode << " ";
+    rcOut << *pcNode->getPrev() << " " << getEdgeType() << " ";
+    rcOut << *currNode << " ";
     rcOut << mcAdjList[pcNode->getPrev()->getLabel()][currNode->getLabel()]->printAttributes();
     rcOut << std::endl;
     currNode = pcNode->getPrev();
@@ -381,6 +381,8 @@ const std::string &rcColor)
   {
     mcAdjList[pcNode->getPrev()->getLabel()]
     [pcNode->getLabel()]->setOutputColor(rcColor);
+    mcAdjList[pcNode->getPrev()->getLabel()]
+    [pcNode->getLabel()]->setHighlight(true);
     pcNode = pcNode->getPrev();
   }
 }
